@@ -1,10 +1,21 @@
 import { Pattern } from "./types";
-import { concat, toRegex } from "./helpers";
+import { concat, toRegex, merge } from "./helpers";
 import { asNatural, asSeparator } from "./validate";
 
 /** Concatenate several input patterns into a single RegExp */
 export function combined(...patterns: Pattern[]): RegExp {
 	return concat(patterns);
+}
+
+/** Concatenate several input patterns into a single RegExp and remove given flags from it */
+export function combinedWithoutFlags(flagsToRemove: string) {
+	const unwantedFlags = eitherOf(...flagsToRemove, withFlags("g"));
+
+	return (...patterns: Pattern[]): RegExp => {
+		const { source, flags } = merge(patterns);
+
+		return toRegex({ source, flags: flags.replace(unwantedFlags, "") });
+	};
 }
 
 /** Concatenate several input patterns into a single RegExp and store the result under a given name */
@@ -93,14 +104,19 @@ export function separatedBy(separator: Pattern) {
 			allFlags.push(...flags);
 		}
 
-		const source = allSources.join(_separator);
-		const flags = Array.from(new Set(allFlags)).join("");
-
-		return new RegExp(`(?:${ source })`, flags);
+		return toRegex({
+			source: `(?:${ allSources.join(_separator) })`,
+			flags: allFlags.join(""),
+		});
 	};
 }
 
 /** Expect appearance of one of the given patterns */
 export function eitherOf(...patterns: Pattern[]): RegExp {
 	return separatedBy("|")(...patterns);
+}
+
+/** Add flags to the resulting regular expression */
+export function withFlags(flags: string): RegExp {
+	return toRegex({ source: "", flags });
 }
