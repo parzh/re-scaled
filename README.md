@@ -27,7 +27,7 @@ Without clear identifier `ipAddressRegex`, you would probably struggle a lot to 
 
 Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). There is no ability to refer to the regular expression in the body of another one. Wuold it be the case, it would dramatically improve scalability and usability of regular expressions. Fortunately, with `regex-utils` this is possible.
 
-First create smaller building blocks, _atoms_, from which our main regex will be comprised later:
+First create smaller building blocks, atoms, from which our main regex will be comprised later:
 
 ```ts
 const dot = /\./;
