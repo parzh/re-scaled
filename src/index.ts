@@ -97,7 +97,7 @@ export function separatedBy(separator: Pattern) {
 		const flags = Array.from(new Set(allFlags)).join("");
 
 		return new RegExp(source, flags);
-	}
+	};
 }
 
 /** Expect appearance of one of the given patterns */
