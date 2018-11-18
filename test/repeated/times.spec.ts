@@ -2,7 +2,7 @@ import "mocha";
 import { expect } from "chai";
 import { combined, repeated } from "../../src";
 
-describe("repeated.twice()", () => {
+describe("repeated.times()", () => {
 	const { source, flags } = combined(/a/g, repeated.times(8)(/b/i));
 
 	it("Repeats pattern exactly `count` amount of times", () => {
