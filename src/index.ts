@@ -96,7 +96,7 @@ export function separatedBy(separator: Pattern) {
 		const source = allSources.join(_separator);
 		const flags = Array.from(new Set(allFlags)).join("");
 
-		return new RegExp(source, flags);
+		return new RegExp(`(?:${ source })`, flags);
 	};
 }
 
