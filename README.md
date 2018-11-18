@@ -1,9 +1,8 @@
-## `regex-utils`
-Helpers and utility functions for creating and managing regular expression patterns
+## `ReUse`
+Helpers and utility functions for creating readable, scalable and reusable regular expressions
 
 ### Tiny guide
-When creating a real-world regular expressions, they usually are not very readable.<br>
-`regex-utils` is trying to solve this problem by adding readability and scalability to regexps.
+When dealing with real-world regular expressions, it is usually super hard to manage them. This is because they are implemented (at least in JavaScript) in such a way that makes them intrinsicly unreadable and unscalable.
 
 Consider the following use case:
 
@@ -22,16 +21,18 @@ isIPAddress("localhost");
 // false
 ```
 
-Without clear identifier `ipAddressRegex`, you would probably struggle a lot to understand the meaning of the given regex. This is happening because regular expressions heavily utilize special characters, which always decrerase readability; in most cases, words are much easier to read than special characters.
+Without clear identifier `ipAddressRegex`, you would probably struggle a lot to understand the meaning of the given regex (unless you just recognize familiar patterns due to your experience). This happens because regular expressions heavily utilize special characters, which always decrease readability; in most cases, plain words are much easier to read than special characters.
 
-`regex-utils` provides handy functions for the most frequently used features, otherwise achieved by using special characters. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
+`ReUse` provides handy functions for the most frequently used features, otherwise achieved by special syntax. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
 
-Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). If we would be able to reuse regex later as a part of another regex, this would drastically improve our ability to scale them up, but regular expressions lacks this functionality (at least, in JavaScript implementation). Fortunately, with `regex-utils` this is possible:
+Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). There is no ability to refer to the regular expression in the body of another one. Wuold it be the case, it would dramatically improve scalability and usability of regular expressions. Fortunately, with `ReUse` this is possible.
+
+First create smaller building blocks, _atoms_, from which our main regex will be comprised later:
 
 ```ts
 const dot = /\./;
-const bit = /[01]/;
 const digit = /\d/;
+const bit = eitherOf(0, 1);
 
 const octetHigh = /25[0-5]/; // 250 to 255
 const octetMiddle = /2[0-4]\d/; // 200 to 249
@@ -40,11 +41,31 @@ const octetLow = combined(optional(bit), digit, optional(digit)); // 0 to 199
 
 const octet = eitherOf(octetHigh, octetMiddle, octetLow); // order matters
 // same as /(?:25[0-5]|2[0-4]\d|[01]?\d\d?)/
+```
 
-const ipAddressRegex1 = detached(repeated.times(3)(octet, dot), octet);
+Now with the help of `octet` and `dot` atoms we can create regular expression for IP addresses, that is easy to read and modify:
+
+```ts
+const ipAddressRegex = detached(repeated.times(3)(octet, dot), octet);
 // three octets each followed by dot, then single octet without a dot
 // same as /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/
-
-const ipAddressRegex2 = detached(separatedBy(dot)(octet, octet, octet, octet));
-// four octets, separated by dots in between
 ```
+
+```ts
+const ipAddressRegex = detached(separatedBy(dot)(octet, octet, octet, octet));
+// four octets with dots in between
+```
+
+What is great here, is that we can use `ipAddressRegex` as an atom to some other regex, if needed:
+
+```ts
+import ipAddress from "./ip-address-regex";
+import port from "./port-regex";
+import humanFriendlyURL from "./human-friendly-url-regex";
+
+const machineFriendlyURL = combined(ipAddress, optional(":", port));
+
+export const url = eitherOf(machineFriendlyURL, humanFriendlyURL);
+```
+
+We can build regular expressions on top of each other!
