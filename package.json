@@ -1,5 +1,5 @@
 {
-  "name": "re-use",
+  "name": "regex-utils",
   "version": "0.6.0",
   "description": "Helpers and utility functions for creating and managing regular expression patterns",
   "private": false,
@@ -34,12 +34,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/parzh/re-use.git"
+    "url": "git+https://gitlab.com/parzh/regex-utils.git"
   },
   "author": "Dmitry Parzhitsky <parzhitsky@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/parzh/re-use/issues"
+    "url": "https://gitlab.com/parzh/regex-utils/issues"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",

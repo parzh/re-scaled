@@ -1,4 +1,4 @@
-## `ReUse`
+## `regex-utils`
 Helpers and utility functions for creating readable, scalable and reusable regular expressions
 
 ### Tiny guide
@@ -23,9 +23,9 @@ isIPAddress("localhost");
 
 Without clear identifier `ipAddressRegex`, you would probably struggle a lot to understand the meaning of the given regex (unless you just recognize familiar patterns due to your experience). This happens because regular expressions heavily utilize special characters, which always decrease readability; in most cases, plain words are much easier to read than special characters.
 
-`ReUse` provides handy functions for the most frequently used features, otherwise achieved by special syntax. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
+`regex-utils` provides handy functions for the most frequently used features, otherwise achieved by special syntax. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
 
-Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). There is no ability to refer to the regular expression in the body of another one. Wuold it be the case, it would dramatically improve scalability and usability of regular expressions. Fortunately, with `ReUse` this is possible.
+Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). There is no ability to refer to the regular expression in the body of another one. Wuold it be the case, it would dramatically improve scalability and usability of regular expressions. Fortunately, with `regex-utils` this is possible.
 
 First create smaller building blocks, _atoms_, from which our main regex will be comprised later:
 
