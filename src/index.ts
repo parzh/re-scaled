@@ -62,7 +62,13 @@ export const repeated = {
 	times(count: number) {
 		asNatural(count, "repeat count");
 
-		return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({ ...descr, source: count ? `(?:${ descr.source }){${ count }}` : "" }));
+		return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({
+			...descr,
+			source:
+				count === 0 ? "" :
+				count === 1 ? descr.source :
+				`(?:${ descr.source }){${ count }}`
+		}));
 	},
 
 	/** Repeat pattern at least `count` amount of times */
