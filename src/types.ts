@@ -1,4 +1,4 @@
-export type Pattern = string | RegExp;
+export type Pattern = string | number | RegExp;
 
 /** @internal */
 export type RegExpDescription = {
