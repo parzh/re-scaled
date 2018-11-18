@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, separatedBy } from "../src";
+import { combined, separatedBy } from "../../src";
 
 describe("separatedBy()", () => {
 	const { source, flags } = combined(/a/g, separatedBy("\.")(/b/i, /c/y));

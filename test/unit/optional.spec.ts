@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, optional } from "../src";
+import { combined, optional } from "../../src";
 
 describe("optional()", () => {
 	const { source, flags } = combined(/a/g, optional(/b/i));

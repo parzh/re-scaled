@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, repeated } from "../../src";
+import { combined, repeated } from "../../../src";
 
 describe("repeated.twice()", () => {
 	const { source, flags } = combined(/a/g, repeated.twice(/b/i));

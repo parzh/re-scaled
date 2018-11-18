@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, eitherOf } from "../src";
+import { combined, eitherOf } from "../../src";
 
 describe("eitherOf()", () => {
 	const { source, flags } = combined(/a/g, eitherOf(/b/i, /c/y));

@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, repeated } from "../../src";
+import { combined, repeated } from "../../../src";
 
 describe("repeated.atLeast()", () => {
 	const { source, flags } = combined(/a/g, repeated.atLeast(8)(/b/i));

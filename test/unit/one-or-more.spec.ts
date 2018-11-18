@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, oneOrMore } from "../src";
+import { combined, oneOrMore } from "../../src";
 
 describe("oneOrMore()", () => {
 	const { source, flags } = combined(/a/g, oneOrMore(/b/i));
