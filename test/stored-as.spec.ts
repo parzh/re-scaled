@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { storedAs } from "../src";
+import { combined, storedAs } from "../src";
 
 describe("storedAs()", () => {
-	const { source, flags } = storedAs("group")(/a/g, /b/i);
+	const { source, flags } = combined(/a/g, storedAs("group")(/b/i));
 
 	it("Concatenates several input patterns into a single RegExp and stores the result under a given name", () => {
-		expect(source).to.equal("(?<group>ab)");
+		expect(source).to.equal("a(?<group>b)");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {
