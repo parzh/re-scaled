@@ -7,9 +7,18 @@ export function combined(...patterns: Pattern[]): RegExp {
 	return concat(patterns);
 }
 
+/** Concatenate several input patterns into a single RegExp and add given flags to it */
+export function combinedWithFlags(additionalFlags: string) {
+	return (...patterns: Pattern[]): RegExp => {
+		const { source, flags } = concat(patterns);
+
+		return toRegex({ source, flags: flags + additionalFlags });
+	};
+}
+
 /** Concatenate several input patterns into a single RegExp and remove given flags from it */
 export function combinedWithoutFlags(flagsToRemove: string) {
-	const unwantedFlags = eitherOf(...flagsToRemove, withFlags("g"));
+	const unwantedFlags = combinedWithFlags("g")(eitherOf(...flagsToRemove));
 
 	return (...patterns: Pattern[]): RegExp => {
 		const { source, flags } = merge(patterns);
@@ -114,9 +123,4 @@ export function separatedBy(separator: Pattern) {
 /** Expect appearance of one of the given patterns */
 export function eitherOf(...patterns: Pattern[]): RegExp {
 	return separatedBy("|")(...patterns);
-}
-
-/** Add flags to the resulting regular expression */
-export function withFlags(flags: string): RegExp {
-	return toRegex({ source: "", flags });
 }
