@@ -1,0 +1,54 @@
+{
+  "name": "regex-utils",
+  "version": "0.1.0",
+  "description": "Helpers and utility functions for creating and managing regular expression patterns",
+  "private": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.js",
+  "scripts": {
+    "test": "npx mocha -r ./node_modules/ts-node/register ./test/**/*.spec.ts",
+    "build": "npx tsc",
+    "clean": "npx rimraf dist",
+    "rebuild": "npm run clean && npm run build",
+    "dev": "npm run build -- --watch",
+    "verify": "npm run build -- --noEmit",
+    "observe": "npm run dev -- --noEmit",
+    "prepublishOnly": "npm test && npm run rebuild",
+    "postpublish": "npm run clean",
+    "try": "npm run prepublishOnly && npm run postpublish",
+    "ship": "npm publish && git push && git push --tags"
+  },
+  "keywords": [
+    "regex",
+    "regular",
+    "expression",
+    "expressions",
+    "regular expression",
+    "regular expressions",
+    "util",
+    "utils",
+    "utility",
+    "utilities",
+    "helper",
+    "helpers"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/parzh/regex-utils.git"
+  },
+  "author": "Dmitry Parzhitsky <parzhitsky@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/parzh/regex-utils/issues"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.9",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6"
+  }
+}
