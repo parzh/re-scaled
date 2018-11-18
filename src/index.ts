@@ -129,3 +129,16 @@ export function separatedBy(separator: Pattern) {
 export function eitherOf(...patterns: Pattern[]): RegExp {
 	return separatedBy("|")(...patterns);
 }
+
+/** TODO: ... */
+export function compose(flags?: string) {
+	return (strings: TemplateStringsArray, ...values: Pattern[]): RegExp => {
+		return toRegex(""); // TODO: implement
+	};
+}
+
+const letter = /\w/;
+const digit = /\d/;
+
+compose("i")`${ digit }{3}|${ letter }|${ 15 }|${ /56/g }`;
+// /(?\d){3}|(?:\w)|(?:15)|(?:56)/gi
