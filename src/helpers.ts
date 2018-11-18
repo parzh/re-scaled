@@ -16,7 +16,7 @@ function merge(patterns: Pattern[]): RegExpDescription {
 }
 
 /** @internal */
-export function concat(patterns: Pattern[], alter: (descritpion: RegExpDescription) => RegExpDescription = (descr) => descr): RegExp {
+export function concat(patterns: Pattern[], alter: (description: RegExpDescription) => RegExpDescription = (descr) => descr): RegExp {
 	const { source = "", flags = "" } = alter(merge(patterns));
 
 	return new RegExp(source, uniqueChars(flags));
