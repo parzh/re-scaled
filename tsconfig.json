@@ -7,10 +7,10 @@
     "outDir": "./dist",
     "strict": true,
     "noUnusedLocals": true,
-    "stripInternal": true
+    "stripInternal": true,
   },
   "include": [
     "./src",
-    "./test"
-  ]
+    "./test",
+  ],
 }
