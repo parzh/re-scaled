@@ -5,7 +5,7 @@ import { combined, separatedBy } from "../src";
 describe("separatedBy()", () => {
 	const { source, flags } = combined(/a/g, separatedBy("\.")(/b/i, /c/y));
 
-	it("Expects at least one appearance of the given pattern", () => {
+	it("Concatenates several input patterns into a single RegExp, separating them by a given `separator` pattern", () => {
 		expect(source).to.equal("a(?:b\.c)");
 	});
 
