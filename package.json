@@ -1,6 +1,6 @@
 {
   "name": "regex-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Helpers and utility functions for creating and managing regular expression patterns",
   "private": false,
   "main": "./dist/index.js",
