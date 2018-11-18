@@ -2,7 +2,7 @@ import "mocha";
 import { expect } from "chai";
 import { oneOrMore, storedAs, combined, detached, optional } from "../../src";
 
-describe("Integration case: number", () => {
+describe("Integration case: Number", () => {
 	it("Creates regexp for numbers with optional decimal part", () => {
 		const digits = oneOrMore(/\d/);
 		const decimalSeparator = /[.,]/;
