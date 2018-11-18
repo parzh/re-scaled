@@ -10,6 +10,4 @@ function isPattern(v: Pattern) {
 export const asNatural = valuer.as<number>({ number: "integer", spectrum: "non-negative" });
 
 /** @internal */
-export const asSeparator = valuer.as<Pattern>({
-	'is neither string nor RegExp': isPattern,
-});
+export const asSeparator = valuer.as<Pattern>({ 'is neither string nor RegExp': isPattern });
