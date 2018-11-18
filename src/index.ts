@@ -102,21 +102,20 @@ export const enclosedIn = {
 export function separatedBy(separator: Pattern) {
 	asSeparator(separator, "pattern separator");
 
-	const _separator = separator instanceof RegExp ? separator.source : String(separator);
+	const _separator = new RegExp(separator instanceof RegExp ? separator.source : String(separator));
 
 	return (...patterns: Pattern[]): RegExp => {
-		const allSources: string[] = [];
-		const allFlags: string[] = [];
+		if (!patterns.length)
+			return concat([]);
 
-		for (const { source, flags } of patterns.map(toRegex)) {
-			allSources.push(source);
-			allFlags.push(...flags);
-		}
+		const _patterns: Pattern[] = [];
 
-		return toRegex({
-			source: `(?:${ allSources.join(_separator) })`,
-			flags: allFlags.join(""),
-		});
+		for (const pattern of patterns)
+			_patterns.push(_separator, pattern);
+
+		_patterns.shift();
+
+		return concat(_patterns, (descr) => ({ ...descr, source: `(?:${ descr.source })` }));
 	};
 }
 
