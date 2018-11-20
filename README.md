@@ -1,5 +1,5 @@
 ## `reScaled`
-Helpers and utility functions for creating readable, scalable and reusable regular expressions
+Helpers and utility functions for creating readable, scalable and reusable regular expressions. In order to see versions of the package prior to `re-scaled@1.1.2`, refer to history of the package [`regex-utils`].
 
 ### Tiny guide
 When dealing with real-world regular expressions, it is usually super hard to manage them. This is because they are implemented (at least in JavaScript) in such a way that makes them intrinsicly unreadable and unscalable.
@@ -7,11 +7,10 @@ When dealing with real-world regular expressions, it is usually super hard to ma
 Consider the following use case:
 
 ```ts
-const ipAddressRegex = /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
+const input = prompt();
+const regex = /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
 
-function isIPAddress(input: string): boolean {
-	return ipAddressRegex.test(input);
-}
+regex.test(input);
 ```
 
 Without the knowledge that the regular expression has something to do with IP addresses, you would probably struggle a lot to understand the meaning of the given regex. This happens because regular expressions heavily utilize special characters, which always decrease readability; in most cases, plain words are much easier to read than special characters.
@@ -66,3 +65,5 @@ We can build regular expressions on top of each other!
 ### API
 
 _Coming soon. For now, if possible you should use IntelliSense or autocompletion feature of your favorite IDE._
+
+  [`regex-utils`]: https://npmjs.org/package/regex-utils
