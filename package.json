@@ -1,7 +1,7 @@
 {
   "name": "regex-utils",
   "version": "1.1.0",
-  "description": "Helpers and utility functions for creating and managing regular expression patterns",
+  "description": "Helpers and utility functions for creating scalable regular expressions",
   "private": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
@@ -30,7 +30,10 @@
     "utility",
     "utilities",
     "helper",
-    "helpers"
+    "helpers",
+    "readable",
+    "scalable",
+    "reusable"
   ],
   "repository": {
     "type": "git",

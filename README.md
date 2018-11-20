@@ -12,16 +12,9 @@ const ipAddressRegex = /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-
 function isIPAddress(input: string): boolean {
 	return ipAddressRegex.test(input);
 }
-
-isIPAddress("127.0.0.1");
-// true
-
-isIPAddress("127.0.0.256");
-isIPAddress("localhost");
-// false
 ```
 
-Without clear identifier `ipAddressRegex`, you would probably struggle a lot to understand the meaning of the given regex (unless you just recognize familiar patterns due to your experience). This happens because regular expressions heavily utilize special characters, which always decrease readability; in most cases, plain words are much easier to read than special characters.
+Without the knowledge that the regular expression has something to do with IP addresses, you would probably struggle a lot to understand the meaning of the given regex. This happens because regular expressions heavily utilize special characters, which always decrease readability; in most cases, plain words are much easier to read than special characters.
 
 `regex-utils` provides handy functions for the most frequently used features, otherwise achieved by special syntax. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
 
