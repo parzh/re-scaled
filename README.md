@@ -1,4 +1,4 @@
-## `regex-utils`
+## `reScaled`
 Helpers and utility functions for creating readable, scalable and reusable regular expressions
 
 ### Tiny guide
@@ -16,9 +16,9 @@ function isIPAddress(input: string): boolean {
 
 Without the knowledge that the regular expression has something to do with IP addresses, you would probably struggle a lot to understand the meaning of the given regex. This happens because regular expressions heavily utilize special characters, which always decrease readability; in most cases, plain words are much easier to read than special characters.
 
-`regex-utils` provides handy functions for the most frequently used features, otherwise achieved by special syntax. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
+`reScaled` provides handy functions for the most frequently used features, otherwise achieved by special syntax. Examples of such functions are: `eitherOf()`, `optional()`, `separatedBy()` etc.
 
-Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). There is no ability to refer to the regular expression in the body of another one. Wuold it be the case, it would dramatically improve scalability and usability of regular expressions. Fortunately, with `regex-utils` this is possible.
+Another problem with the regex in the example above is that it is highly repetitive (it is often the case with regular expressions). There is no ability to refer to the regular expression in the body of another one. Wuold it be the case, it would dramatically improve scalability and usability of regular expressions. Fortunately, with `reScaled` this is possible.
 
 First create smaller building blocks, atoms, from which our main regex will be comprised later:
 
@@ -62,3 +62,7 @@ export const url = eitherOf(machineFriendlyURL, humanFriendlyURL);
 ```
 
 We can build regular expressions on top of each other!
+
+### API
+
+_Coming soon. For now, if possible you should use IntelliSense or autocompletion feature of your favorite IDE._

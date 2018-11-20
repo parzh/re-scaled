@@ -1,5 +1,5 @@
 {
-  "name": "regex-utils",
+  "name": "re-scaled",
   "version": "1.1.1",
   "description": "Helpers and utility functions for creating scalable regular expressions",
   "private": false,
@@ -37,12 +37,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/parzh/regex-utils.git"
+    "url": "git+https://gitlab.com/parzh/re-scaled.git"
   },
   "author": "Dmitry Parzhitsky <parzhitsky@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/parzh/regex-utils/issues"
+    "url": "https://gitlab.com/parzh/re-scaled/issues"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
