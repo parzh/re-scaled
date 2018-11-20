@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, oneOrMore } from "../../src";
+import { oneOrMore } from "../../src/modules/one-or-more";
 
 describe("oneOrMore()", () => {
-	const { source, flags } = combined(/a/g, oneOrMore(/b/i));
+	const { source, flags } = oneOrMore(/a/g, /b/i);
 
 	it("Expects at least one appearance of the given pattern", () => {
-		expect(source).to.equal("a(?:b)+");
+		expect(source).to.equal("(?:ab)+");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {

@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combinedWithFlags } from "../../src";
+import { combinedWithFlags } from "../../src/modules/combined-with-flags";
 
 describe("combinedWithFlags()", () => {
 	it("Concatenates several input patterns into a single RegExp and adds given flags to it", () => {

@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combinedWithoutFlags } from "../../src";
+import { combinedWithoutFlags } from "../../src/modules/combined-without-flags";
 
 describe("combinedWithoutFlags()", () => {
 	it("Concatenates several input patterns into a single RegExp and removes given flags from it", () => {

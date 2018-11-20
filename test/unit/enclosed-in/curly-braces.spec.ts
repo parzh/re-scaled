@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, enclosedIn } from "../../../src";
+import { enclosedInCurlyBraces } from "../../../src/modules/enclosed-in/curly-braces";
 
 describe("enclosedIn.curlyBraces()", () => {
-	const { source, flags } = combined(/a/g, enclosedIn.curlyBraces(/b/i));
+	const { source, flags } = enclosedInCurlyBraces(/a/g, /b/i);
 
 	it("Encloses pattern in `{}` curly braces", () => {
-		expect(source).to.equal("a\\{b\\}");
+		expect(source).to.equal("\\{ab\\}");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {

@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, enclosedIn } from "../../../src";
+import { enclosedInSquareBrackets } from "../../../src/modules/enclosed-in/square-brackets";
 
 describe("enclosedIn.squareBrackets()", () => {
-	const { source, flags } = combined(/a/g, enclosedIn.squareBrackets(/b/i));
+	const { source, flags } = enclosedInSquareBrackets(/a/g, /b/i);
 
 	it("Encloses pattern in `[]` square brackets", () => {
-		expect(source).to.equal("a\\[b\\]");
+		expect(source).to.equal("\\[ab\\]");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {

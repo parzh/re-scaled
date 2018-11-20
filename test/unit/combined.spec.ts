@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { combined } from "../../src";
+import { combined } from "../../src/modules/combined";
 
 describe("combined()", () => {
 	const { source, flags } = combined(/a/g, /b/i);

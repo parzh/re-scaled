@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, repeated } from "../../../src";
+import { repeatedBetween } from "../../../src/modules/repeated/between";
 
-describe("repeated.atLeast()", () => {
-	const { source, flags } = combined(/a/g, repeated.between(3, 5)(/b/i));
+describe("repeated.between()", () => {
+	const { source, flags } = repeatedBetween(3, 5)(/a/g, /b/i);
 
 	it("Repeats pattern between `min` and `max` amount of times inclusively", () => {
-		expect(source).to.equal("a(?:b){3,5}");
+		expect(source).to.equal("(?:ab){3,5}");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {

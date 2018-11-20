@@ -1,6 +1,6 @@
 import "mocha";
 import { expect } from "chai";
-import { detached } from "../../src";
+import { detached } from "../../src/modules/detached";
 
 describe("detached()", () => {
 	const { source, flags } = detached(/a/g, /b/i);

@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, repeated } from "../../../src";
+import { repeatedAtLeast } from "../../../src/modules/repeated/at-least";
 
 describe("repeated.atLeast()", () => {
-	const { source, flags } = combined(/a/g, repeated.atLeast(8)(/b/i));
+	const { source, flags } = repeatedAtLeast(8)(/a/g, /b/i);
 
 	it("Repeats pattern at least `count` amount of times", () => {
-		expect(source).to.equal("a(?:b){8,}");
+		expect(source).to.equal("(?:ab){8,}");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {

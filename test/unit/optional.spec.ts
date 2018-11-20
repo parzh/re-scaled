@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, optional } from "../../src";
+import { optional } from "../../src/modules/optional";
 
 describe("optional()", () => {
-	const { source, flags } = combined(/a/g, optional(/b/i));
+	const { source, flags } = optional(/a/g, /b/i);
 
 	it("Makes pattern optional", () => {
-		expect(source).to.equal("a(?:b)?");
+		expect(source).to.equal("(?:ab)?");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {

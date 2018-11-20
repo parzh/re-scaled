@@ -1,12 +1,12 @@
 import "mocha";
 import { expect } from "chai";
-import { combined, repeated } from "../../../src";
+import { repeatedTwice } from "../../../src/modules/repeated/twice";
 
 describe("repeated.twice()", () => {
-	const { source, flags } = combined(/a/g, repeated.twice(/b/i));
+	const { source, flags } = repeatedTwice(/a/g, /b/i);
 
 	it("Repeats pattern exactly twice", () => {
-		expect(source).to.equal("a(?:b){2}");
+		expect(source).to.equal("(?:ab){2}");
 	});
 
 	it("Merges all flags from all RegExp inputs together", () => {
