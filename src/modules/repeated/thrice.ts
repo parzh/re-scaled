@@ -1,5 +1,5 @@
 import { Pattern } from "../../types";
-import { concat } from "../../helpers";
+import { concat } from "../../helpers/concat";
 
 /** Repeat pattern exactly three times */
 export function repeatedThrice(...patterns: Pattern[]): RegExp {

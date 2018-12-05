@@ -10,5 +10,5 @@ export const enclosedIn = {
 	squareBrackets,
 
 	/** Enclose pattern in `{}` curly braces */
-	curlyBraces
+	curlyBraces,
 };

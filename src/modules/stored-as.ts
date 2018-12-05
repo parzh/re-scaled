@@ -1,5 +1,5 @@
 import { Pattern } from "../types";
-import { concat } from "../helpers";
+import { concat } from "../helpers/concat";
 
 /** Concatenate several input patterns into a single RegExp and store the result under a given name */
 export function storedAs(name: string) {

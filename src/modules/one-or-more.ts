@@ -1,5 +1,5 @@
 import { Pattern } from "../types";
-import { concat } from "../helpers";
+import { concat } from "../helpers/concat";
 
 /** Expect at least one appearance of the given pattern */
 export function oneOrMore(...patterns: Pattern[]): RegExp {

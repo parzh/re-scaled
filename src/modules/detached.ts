@@ -1,5 +1,5 @@
 import { Pattern } from "../types";
-import { concat } from "../helpers";
+import { concat } from "../helpers/concat";
 
 /** Expect the pattern to be a whole string, rather than a part of it */
 export function detached(...patterns: Pattern[]): RegExp {

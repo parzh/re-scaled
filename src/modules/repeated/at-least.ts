@@ -1,6 +1,6 @@
-import { asNatural } from "../../validate";
 import { Pattern } from "../../types";
-import { concat } from "../../helpers";
+import { asNatural } from "../../validate/as-natural";
+import { concat } from "../../helpers/concat";
 
 /** Repeat pattern at least `count` amount of times */
 export function repeatedAtLeast(count: number) {

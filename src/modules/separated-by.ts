@@ -1,6 +1,12 @@
+import { valuer } from "@valuer/main";
 import { Pattern } from "../types";
-import { asSeparator } from "../validate";
-import { concat } from "../helpers";
+import { concat } from "../helpers/concat";
+
+/** @private */
+const asSeparator = valuer.as<Pattern>({
+	'is neither string nor RegExp': (v: Pattern) =>
+		typeof v === "string" || v instanceof RegExp,
+});
 
 /** Concatenate several input patterns into a single RegExp, separating them by a given `separator` pattern */
 export function separatedBy(separator: Pattern) {
