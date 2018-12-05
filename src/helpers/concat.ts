@@ -6,6 +6,9 @@ import { merge } from "./merge";
 const noop = (arg: any) => arg;
 
 /** @internal */
-export function concat(patterns: Pattern[], alter: (description: RegExpDescription) => RegExpDescription = noop): RegExp {
+export function concat(
+	patterns: Pattern[],
+	alter: (description: RegExpDescription) => RegExpDescription = noop,
+): RegExp {
 	return toRegex(alter(merge(patterns)));
 }

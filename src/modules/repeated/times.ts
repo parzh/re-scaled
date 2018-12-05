@@ -19,5 +19,8 @@ const countedSource = (count: number, source: string) => {
 export function repeatedTimes(count: number) {
 	asNatural(count, "repeat count");
 
-	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({ ...descr, source: countedSource(count, descr.source) }));
+	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({
+		...descr,
+		source: countedSource(count, descr.source),
+	}));
 }

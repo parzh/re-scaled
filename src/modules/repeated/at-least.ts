@@ -6,5 +6,8 @@ import { concat } from "../../helpers/concat";
 export function repeatedAtLeast(count: number) {
 	asNatural(count, `min repeat count`);
 
-	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({ ...descr, source: `(?:${ descr.source }){${ count },}` }));
+	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({
+		...descr,
+		source: `(?:${ descr.source }){${ count },}`,
+	}));
 }

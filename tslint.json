@@ -1,0 +1,32 @@
+{
+	"defaultSeverity": "error",
+	"extends": [
+		"tslint:recommended"
+	],
+	"jsRules": {},
+	"rules": {
+		// Small easily readable one-line statements are fine
+		"curly": false,
+
+		// I personally prefer tabs
+		"indent": [
+			true,
+			"tabs"
+		],
+
+		// This rule works inconsistently
+		"object-literal-sort-keys": false,
+
+		// Alphabetic sorting of imports is useless
+		"ordered-imports": false,
+
+		// Allow to prepend variables with underscore to store validation results
+		"variable-name": [
+			true,
+			"ban-keywords",
+			"check-format",
+			"allow-leading-underscore"
+		]
+	},
+	"rulesDirectory": []
+}

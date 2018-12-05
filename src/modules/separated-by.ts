@@ -4,7 +4,7 @@ import { concat } from "../helpers/concat";
 
 /** @private */
 const asSeparator = valuer.as<Pattern>({
-	'is neither string nor RegExp': (v: Pattern) =>
+	"is neither string nor RegExp": (v: Pattern) =>
 		typeof v === "string" || v instanceof RegExp,
 });
 
