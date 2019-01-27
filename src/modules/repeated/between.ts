@@ -7,8 +7,11 @@ export function repeatedBetween(min: number, max: number) {
 	asNatural(min, "min repeat count");
 	asNatural(max, "max repeat count");
 
+	const _min = Math.min(min, max);
+	const _max = Math.max(min, max);
+
 	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({
 		...descr,
-		source: `(?:${ descr.source }){${ min },${ max }}`,
+		source: `(?:${ descr.source }){${ _min },${ _max }}`,
 	}));
 }

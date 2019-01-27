@@ -12,4 +12,12 @@ describe("repeated.between()", () => {
 	it("Merges all flags from all RegExp inputs together", () => {
 		expect(flags).to.equal("gi");
 	});
+
+	it("Allows reverse ranges to be provided", () => {
+		let regex: RegExp | null = null;
+
+		expect(() => regex = repeatedBetween(3, 2)("c")).to.not.throw(SyntaxError);
+
+		expect(regex!.source).to.equal("(?:c){2,3}");
+	});
 });
