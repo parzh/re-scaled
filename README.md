@@ -67,9 +67,12 @@ We can build regular expressions on top of each other!
 
 Follow the [docs].
 
+_Try [direct link] if the previous didn't work._
+
 ## Legacy notes
 
 In order to see versions of the package prior to `re-scaled@1.1.2`, refer to history of the package [`regex-utils`].
 
   [`regex-utils`]: https://npmjs.org/package/regex-utils
   [docs]: /docs/api/README.md
+  [direct link]: https://gitlab.com/parzh/re-scaled/blob/master/docs/api/README.md
