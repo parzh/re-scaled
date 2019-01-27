@@ -1,3 +1,4 @@
+/** @internal */
 export type Pattern = string | number | RegExp;
 
 /** @internal */

@@ -1,3 +1,5 @@
+export { Pattern } from "./types";
+
 export { combined } from "./modules/combined";
 export { combinedWithFlags } from "./modules/combined-with-flags";
 export { combinedWithoutFlags } from "./modules/combined-without-flags";
