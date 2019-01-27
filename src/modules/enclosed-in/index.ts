@@ -3,12 +3,12 @@ import { enclosedInSquareBrackets as squareBrackets } from "./square-brackets";
 import { enclosedInCurlyBraces as curlyBraces } from "./curly-braces";
 
 export const enclosedIn = {
-	/** Enclose pattern in `()` parentheses */
+	/** Enclose pattern(s) in `()` parentheses */
 	parentheses,
 
-	/** Enclose pattern in `[]` square braces */
+	/** Enclose pattern(s) in `[]` square braces */
 	squareBrackets,
 
-	/** Enclose pattern in `{}` curly braces */
+	/** Enclose pattern(s) in `{}` curly braces */
 	curlyBraces,
 };
