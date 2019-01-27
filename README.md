@@ -1,7 +1,7 @@
-## `reScaled`
-Helpers and utility functions for creating readable, scalable and reusable regular expressions. In order to see versions of the package prior to `re-scaled@1.1.2`, refer to history of the package [`regex-utils`].
+# `reScaled`
+Helpers and utility functions for creating readable, scalable and reusable regular expressions.
 
-### Tiny guide
+## Tiny guide
 When dealing with real-world regular expressions, it is usually super hard to manage them. This is because they are implemented (at least in JavaScript) in such a way that makes them intrinsicly unreadable and unscalable.
 
 Consider the following use case:
@@ -63,8 +63,13 @@ export default url;
 
 We can build regular expressions on top of each other!
 
-### API
+## API
 
-_Coming soon. For now, if possible you should use IntelliSense or autocompletion feature of your favorite IDE._
+Follow the [docs].
+
+## Legacy notes
+
+In order to see versions of the package prior to `re-scaled@1.1.2`, refer to history of the package [`regex-utils`].
 
   [`regex-utils`]: https://npmjs.org/package/regex-utils
+  [docs]: /docs/api/README.md
