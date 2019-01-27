@@ -6,9 +6,9 @@ describe("Integration case: IP address", () => {
 	it("Creates regexp for IP addresses", () => {
 		const octet = /(?:25[0-5]|2[0-4]\d|[01]?\d\d?)/;
 		const { source } = detached(separatedBy(/\./)(octet, octet, octet, octet));
-	
-		expect(source).to.equal(
-			`^(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?))$`
-		);
+		const { source: octetSource } = octet;
+		const expected = `^(?:${ octetSource }\\.${ octetSource }\\.${ octetSource }\\.${ octetSource })$`;
+
+		expect(source).to.equal(expected);
 	});
 });
