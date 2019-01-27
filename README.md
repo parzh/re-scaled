@@ -56,8 +56,9 @@ import port from "./port-regex";
 import humanFriendlyURL from "./human-friendly-url-regex";
 
 const machineFriendlyURL = combined(ipAddress, optional(":", port));
+const url = eitherOf(machineFriendlyURL, humanFriendlyURL);
 
-export const url = eitherOf(machineFriendlyURL, humanFriendlyURL);
+export default url;
 ```
 
 We can build regular expressions on top of each other!
