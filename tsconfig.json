@@ -10,7 +10,4 @@
     "stripInternal": true,
     "downlevelIteration": true,
   },
-  "include": [
-    "./src",
-  ],
 }
