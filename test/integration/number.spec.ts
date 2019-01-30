@@ -8,9 +8,9 @@ describe("Integration case: Number", () => {
 		const decimalSeparator = /[.,]/;
 		const integerPart = storedAs("integer")(digits);
 		const decimalPart = combined(decimalSeparator, storedAs("decimal")(digits));
-	
+
 		const { source } = detached(integerPart, optional(decimalPart));
-	
+
 		expect(source).to.equal("^(?<integer>(?:\\d)+)(?:[.,](?<decimal>(?:\\d)+))?$");
 	});
 });
