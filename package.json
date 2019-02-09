@@ -46,6 +46,7 @@
     "url": "https://gitlab.com/parzh/re-scaled/issues"
   },
   "devDependencies": {
+    "@parzh/tslint-config": "^1.0.1",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.9",
