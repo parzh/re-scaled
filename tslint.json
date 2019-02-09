@@ -1,7 +1,3 @@
 {
-	"extends": "@parzh/tslint-config/tslint.json",
-	"defaultSeverity": "error",
-	"jsRules": {},
-	"rules": {},
-	"rulesDirectory": []
+	"extends": "@parzh/tslint-config/tslint.json"
 }
