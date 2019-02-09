@@ -1,6 +1,6 @@
 {
   "name": "re-scaled",
-  "version": "1.2.14",
+  "version": "1.2.15",
   "description": "Helpers and utility functions for creating scalable regular expressions",
   "private": false,
   "main": "./dist/index.js",
