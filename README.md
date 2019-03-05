@@ -24,43 +24,43 @@ Another problem with the regex in the example above is that it is highly repetit
 First, create smaller building blocks, _atoms_, from which our main regex will be comprised later:
 
 ```ts
-const dot = /\./;
-const digit = /\d/;
-const bit = eitherOf(0, 1);
+const $Dot = /\./;
+const $Digit = /\d/;
+const $Bit = eitherOf(0, 1);
 
-const octetHigh = /25[0-5]/; // 250 to 255
-const octetMiddle = /2[0-4]\d/; // 200 to 249
-const octetLow = combined(optional(bit), digit, optional(digit)); // 0 to 199
+const $OctetHigh = /25[0-5]/; // 250 to 255
+const $OctetMiddle = /2[0-4]\d/; // 200 to 249
+const $OctetLow = combined(optional($Bit), $Digit, optional($Digit)); // 0 to 199
 // same as /[01]?\d\d?/
 
-const octet = eitherOf(octetHigh, octetMiddle, octetLow); // order matters
+const $Octet = eitherOf($OctetHigh, $OctetMiddle, $OctetLow); // order matters
 // same as /(?:25[0-5]|2[0-4]\d|[01]?\d\d?)/
 ```
 
-Now with the help of `octet` and `dot` atoms we can create regular expression for IP addresses, that is easy to read and modify:
+Now with the help of `$Octet` and `$Dot` atoms we can create regular expression for IP addresses, that is easy to read and modify:
 
 ```ts
-const ipAddressRegex = detached(repeated.times(3)(octet, dot), octet);
+const $IPAddressRegex = detached(repeated.times(3)($Octet, $Dot), $Octet);
 // three octets each followed by dot, then single octet without a dot
 // same as /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/
 ```
 
 ```ts
-const ipAddressRegex = detached(separatedBy(dot)(octet, octet, octet, octet));
+const $IPAddressRegex = detached(separatedBy($Dot)($Octet, $Octet, $Octet, $Octet));
 // four octets with dots in between
 ```
 
-What is great here, is that we can use `ipAddressRegex` as an atom to some other regex, if needed:
+What is great here, is that we can use `$IPAddressRegex` as an atom to some other regex, if needed:
 
 ```ts
-import ipAddress from "./ip-address-regex";
-import port from "./port-regex";
-import humanFriendlyURL from "./human-friendly-url-regex";
+import $IPAddress from "./ip-address-regex";
+import $Port from "./port-regex";
+import $HumanFriendlyURL from "./human-friendly-url-regex";
 
-const machineFriendlyURL = combined(ipAddress, optional(":", port));
-const url = eitherOf(machineFriendlyURL, humanFriendlyURL);
+const $MachineFriendlyURL = combined($IPAddress, optional(":", $Port));
+const $URL = eitherOf($MachineFriendlyURL, $HumanFriendlyURL);
 
-export default url;
+export default $URL;
 ```
 
 We can build regular expressions on top of each other!
