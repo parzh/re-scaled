@@ -4,17 +4,17 @@ import { separatedBy, detached, storedAs, eitherOf, combined, optional, repeated
 
 describe("Integration case: Localhost", () => {
 	it("Creates regexp for localhost hostname", () => {
-		const octetHigh = /25[0-5]/;
-		const octetMid = /2[0-4]\d/;
-		const octetLow = combined(optional(eitherOf(0, 1)), repeated.between(1, 2)(/\d/));
-		const octet = eitherOf(octetHigh, octetMid, octetLow);
+		const $OctetHigh = /25[0-5]/;
+		const $OctetMid = /2[0-4]\d/;
+		const $OctetLow = combined(optional(eitherOf(0, 1)), repeated.between(1, 2)(/\d/));
+		const $Octet = eitherOf($OctetHigh, $OctetMid, $OctetLow);
 
-		const dot = /\./;
-		const localhostIpV6 = /\[::1\]/;
-		const localhostIpV4 = separatedBy(dot)(/127/, octet, octet, octet);
+		const $Dot = /\./;
+		const $LocalhostIpV6 = /\[::1\]/;
+		const $LocalhostIpV4 = separatedBy($Dot)(/127/, $Octet, $Octet, $Octet);
 
-		const { source } = detached(storedAs("hostname")(eitherOf("localhost", localhostIpV6, localhostIpV4)));
-		const { source: octetSource } = octet;
+		const { source } = detached(storedAs("hostname")(eitherOf("localhost", $LocalhostIpV6, $LocalhostIpV4)));
+		const { source: octetSource } = $Octet;
 		const dottedOctetSource = `\\.${ octetSource }`;
 		const expected = `^(?<hostname>(?:localhost|\\[::1\\]|(?:127${ dottedOctetSource.repeat(3) })))$`;
 

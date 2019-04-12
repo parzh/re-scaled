@@ -6,6 +6,6 @@ export function storedAs(name: string) {
 	return (...patterns: Pattern[]): RegExp =>
 		concat(patterns, (descr) => ({
 			...descr,
-			source: `(?<${name}>${descr.source})`,
+			source: `(?<${ name }>${ descr.source })`,
 		}));
 }
