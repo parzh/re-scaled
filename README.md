@@ -8,7 +8,7 @@ Consider the following use case:
 
 ```ts
 const input = prompt();
-const regex = /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
+const regex = /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d)$/;
 
 regex.test(input);
 ```
@@ -30,27 +30,27 @@ const $Bit = eitherOf(0, 1);
 
 const $OctetHigh = /25[0-5]/; // 250 to 255
 const $OctetMiddle = /2[0-4]\d/; // 200 to 249
-const $OctetLow = combined(optional($Bit), $Digit, optional($Digit)); // 0 to 199
-// same as /[01]?\d\d?/
+const $OctetLow = combined(optional($Bit), optional($Digit), $Digit); // 0 to 199
+// same as /[01]?\d?\d/
 
 const $Octet = eitherOf($OctetHigh, $OctetMiddle, $OctetLow); // order matters
-// same as /(?:25[0-5]|2[0-4]\d|[01]?\d\d?)/
+// same as /(?:25[0-5]|2[0-4]\d|[01]?\d?\d)/
 ```
 
-Now with the help of `$Octet` and `$Dot` atoms we can create regular expression for IP addresses, that is easy to read and modify:
+Now, with the help of `$Octet` and `$Dot` atoms we can create regular expression for IP addresses, that is easy to read and modify:
 
 ```ts
-const $IPAddressRegex = detached(repeated.times(3)($Octet, $Dot), $Octet);
+const $IPAddress = detached(repeated.times(3)($Octet, $Dot), $Octet);
 // three octets each followed by dot, then single octet without a dot
-// same as /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/
+// same as /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d)$/
 ```
 
 ```ts
-const $IPAddressRegex = detached(separatedBy($Dot)($Octet, $Octet, $Octet, $Octet));
+const $IPAddress = detached(separatedBy($Dot)($Octet, $Octet, $Octet, $Octet));
 // four octets with dots in between
 ```
 
-What is great here, is that we can use `$IPAddressRegex` as an atom to some other regex, if needed:
+What is great here, is that we can use `$IPAddress` as an atom to some other regex, if needed:
 
 ```ts
 import $IPAddress from "./ip-address-regex";
