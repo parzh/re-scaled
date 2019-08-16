@@ -21,9 +21,10 @@ export function separatedBy(separator: Pattern) {
 		const _patterns: Pattern[] = [];
 
 		for (const pattern of patterns)
-			_patterns.push(_separator, pattern);
+			_patterns.push(pattern, _separator);
 
-		_patterns.shift();
+		// remove the last element, which is a separator
+		_patterns.length--;
 
 		return concat(_patterns, (descr) => ({ ...descr, source: `(?:${ descr.source })` }));
 	};
