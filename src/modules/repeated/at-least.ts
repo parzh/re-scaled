@@ -1,4 +1,4 @@
-import { Pattern } from "../../types";
+import { Pattern, RegExpLike } from "../../types";
 import { concat } from "../../helpers/concat";
 
 import validate from "./validate-as-natural.helper";
@@ -7,8 +7,12 @@ import validate from "./validate-as-natural.helper";
 export function repeatedAtLeast(count: number) {
 	validate(count, "min repeat count");
 
-	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({
-		...descr,
-		source: `(?:${ descr.source }){${ count },}`,
-	}));
+	/** @private */
+	const addQuantifierToSource = (descr: RegExpLike): RegExpLike => {
+		descr.source = `(?:${ descr.source }){${ count },}`;
+
+		return descr;
+	};
+
+	return (...patterns: Pattern[]): RegExp => concat(patterns, addQuantifierToSource);
 }

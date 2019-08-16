@@ -1,4 +1,4 @@
-import { Pattern } from "../../types";
+import { Pattern, RegExpLike } from "../../types";
 import { concat } from "../../helpers/concat";
 
 import validate from "./validate-as-natural.helper";
@@ -20,8 +20,12 @@ const countedSource = (count: number, source: string) => {
 export function repeatedTimes(count: number) {
 	validate(count, "repeat count");
 
-	return (...patterns: Pattern[]): RegExp => concat(patterns, (descr) => ({
-		...descr,
-		source: countedSource(count, descr.source),
-	}));
+	/** @private */
+	const addQuantifierToSource = (descr: RegExpLike): RegExpLike => {
+		descr.source = countedSource(count, descr.source);
+
+		return descr;
+	};
+
+	return (...patterns: Pattern[]): RegExp => concat(patterns, addQuantifierToSource);
 }
