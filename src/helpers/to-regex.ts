@@ -1,10 +1,5 @@
 import { Pattern, RegExpDescription } from "../types";
-
-/** @private */
-const sanitize = ({ source, flags }: RegExpDescription): RegExpDescription => ({
-	source: source.replace(/\(\?\:\)/g, ""),
-	flags: Array.from(new Set(flags)).join(""),
-});
+import { sanitize } from "./sanitize";
 
 /** @internal */
 export function toRegex(pattern: Pattern | RegExpDescription): RegExp {
