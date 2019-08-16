@@ -1,11 +1,11 @@
 import { Pattern, RegExpLike } from "../../types";
 import { concat } from "../../helpers/concat";
 
-import validate from "./validate-as-natural.helper";
+import asNatural from "./validate-as-natural.helper";
 
 /** Repeat pattern at least `count` amount of times */
 export function repeatedAtLeast(count: number) {
-	validate(count, "min repeat count");
+	asNatural(count, "min repeat count");
 
 	/** @private */
 	const addQuantifierToSource = (descr: RegExpLike): RegExpLike => {

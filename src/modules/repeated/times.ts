@@ -1,7 +1,7 @@
 import { Pattern, RegExpLike } from "../../types";
 import { concat } from "../../helpers/concat";
 
-import validate from "./validate-as-natural.helper";
+import asNatural from "./validate-as-natural.helper";
 
 /** @private */
 const countedSource = (count: number, source: string) => {
@@ -18,7 +18,7 @@ const countedSource = (count: number, source: string) => {
 
 /** Repeat pattern exactly `count` amount of times */
 export function repeatedTimes(count: number) {
-	validate(count, "repeat count");
+	asNatural(count, "repeat count");
 
 	/** @private */
 	const addQuantifierToSource = (descr: RegExpLike): RegExpLike => {
