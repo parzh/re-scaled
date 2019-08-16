@@ -86,7 +86,38 @@ eitherOf("a", /b/);
 // /(?:a|b)/
 ```
 
-_Notice that in the second example a character set is a more optimal solution, so in the case of single characters prefer using regex literal `[ab]` if possible._
+_Notice that in the second example a character set is a more optimal solution, so in the case of single characters prefer using `eitherOfChars()` function or regex literal `[ab]` if possible._
+
+***
+
+### `eitherOfChars(...characters: string[]): RegExp`
+
+Expect appearance of one of the characters given in the input. The argument(s) of this function must be primitive string(s), it is an error to provide arguments of other types.
+
+```ts
+eitherOfChars("a", "B");
+// /[aB]/
+```
+
+```ts
+eitherOfChars("chAracters");
+// /[chArates]/
+```
+
+```ts
+eitherOfChars("hello", "world");
+// /[helowrd]/
+```
+
+```ts
+eitherOfChars(/a/g, /b/i);
+// Validation failed: value is not primitive: value <RegExp> /a/g
+```
+
+```ts
+eitherOfChars(42, 17);
+// Validation failed: value is not of type "string": value <number> 42
+```
 
 ***
 

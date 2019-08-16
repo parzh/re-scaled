@@ -5,6 +5,7 @@ export { combinedWithFlags } from "./modules/combined-with-flags";
 export { combinedWithoutFlags } from "./modules/combined-without-flags";
 export { detached } from "./modules/detached";
 export { eitherOf } from "./modules/either-of";
+export { eitherOfChars } from "./modules/either-of-chars";
 export { enclosedIn } from "./modules/enclosed-in";
 export { enclosedInCurlyBraces } from "./modules/enclosed-in/curly-braces";
 export { enclosedInParentheses } from "./modules/enclosed-in/parentheses";
