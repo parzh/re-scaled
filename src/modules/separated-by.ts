@@ -1,6 +1,7 @@
 import { valuer } from "@valuer/main";
 import { Pattern } from "../types";
 import { concat } from "../helpers/concat";
+import { grouped } from "./grouped";
 
 /** @private */
 const asSeparator = valuer.as<Pattern>({
@@ -26,6 +27,6 @@ export function separatedBy(separator: Pattern) {
 		// remove the last element, which is a separator
 		_patterns.length--;
 
-		return concat(_patterns, (descr) => ({ ...descr, source: `(?:${ descr.source })` }));
+		return grouped(..._patterns);
 	};
 }
