@@ -1,8 +1,8 @@
-import { Pattern, RegExpDescription } from "../types";
+import { Pattern, RegExpLike } from "../types";
 import { sanitize } from "./sanitize";
 
 /** @internal */
-export function toRegex(pattern: Pattern | RegExpDescription): RegExp {
+export function toRegex(pattern: Pattern | RegExpLike): RegExp {
 	if (pattern instanceof RegExp)
 		return pattern;
 

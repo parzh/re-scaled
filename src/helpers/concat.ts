@@ -1,4 +1,4 @@
-import { Pattern, RegExpDescription } from "../types";
+import { Pattern, RegExpLike } from "../types";
 import { toRegex } from "./to-regex";
 import { merge } from "./merge";
 
@@ -8,7 +8,7 @@ const noop = (arg: any) => arg;
 /** @internal */
 export function concat(
 	patterns: Pattern[],
-	alter: (description: RegExpDescription) => RegExpDescription = noop,
+	alter: (descr: RegExpLike) => RegExpLike = noop,
 ): RegExp {
 	return toRegex(alter(merge(patterns)));
 }

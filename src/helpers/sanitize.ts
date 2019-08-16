@@ -1,7 +1,7 @@
-import { RegExpDescription } from "../types";
+import { RegExpLike } from "../types";
 
 /** @internal */
-export const sanitize = (descr: RegExpDescription): RegExpDescription => {
+export const sanitize = (descr: RegExpLike): RegExpLike => {
 	descr.source = descr.source.replace(/\(\?\:\)/g, "");
 	descr.flags = Array.from(new Set(descr.flags)).join("");
 

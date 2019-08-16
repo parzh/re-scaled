@@ -1,7 +1,7 @@
 export type Pattern = string | number | RegExp;
 
 /** @internal */
-export interface RegExpDescription {
+export interface RegExpLike {
 	source: string;
 	flags: string;
 }

@@ -1,8 +1,8 @@
-import { Pattern, RegExpDescription } from "../types";
+import { Pattern, RegExpLike } from "../types";
 import { toRegex } from "./to-regex";
 
 /** @internal */
-export function merge(patterns: Pattern[]): RegExpDescription {
+export function merge(patterns: Pattern[]): RegExpLike {
 	const sourceChunks: string[] = [];
 	const flagsChunks: string[] = [];
 
