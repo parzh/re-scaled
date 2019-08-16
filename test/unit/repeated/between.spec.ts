@@ -14,7 +14,7 @@ describe("repeated.between()", () => {
 	});
 
 	it("Allows reverse ranges to be provided", () => {
-		let regex: RegExp | null = null;
+		let regex: RegExp;
 
 		expect(() => regex = repeatedBetween(3, 2)("c")).to.not.throw(SyntaxError);
 
