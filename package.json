@@ -7,17 +7,13 @@
   "types": "./dist/index.d.js",
   "scripts": {
     "lint": "tslint --project . --format stylish",
-    "test": "npx mocha -r ./node_modules/ts-node/register ./test/**/*.spec.ts",
-    "build": "npx tsc --build src",
-    "clean": "npx rimraf dist",
-    "rebuild": "npm run clean && npm run build",
+    "test": "mocha -r ./node_modules/ts-node/register ./test/**/*.spec.ts",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc --build src",
     "dev": "npm run build -- --watch",
-    "verify": "npm run build -- --noEmit",
-    "observe": "npm run dev -- --noEmit",
-    "prepublishOnly": "npm run lint && npm test && npm run rebuild",
-    "postpublish": "npm run clean",
-    "try": "npm run prepublishOnly && npm run postpublish",
-    "ship": "npm publish && git push && git push --tags"
+    "prepublishOnly": "npm run lint && npm test && npm run build",
+    "postpublish": "npm run clean && git push --follow-tags"
   },
   "keywords": [
     "regex",
