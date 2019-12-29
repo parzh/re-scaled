@@ -21,4 +21,8 @@ describe("eitherOfChars()", () => {
 	it("Rejects creating empty character set", () => {
 		expect(() => eitherOfChars("")).to.throw(/Cannot create empty character set/);
 	});
+
+	it("Escapes special characters", () => {
+		expect(() => eitherOfChars("+-*/")).to.not.throw(/Invalid regular expression/);
+	});
 });
