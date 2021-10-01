@@ -77,4 +77,4 @@ In order to see versions of the package prior to `re-scaled@1.1.2`, refer to his
 
   [`regex-utils`]: https://npmjs.org/package/regex-utils
   [docs]: /docs/api/README.md
-  [direct link]: https://gitlab.com/parzh/re-scaled/blob/master/docs/api/README.md
+  [direct link]: https://github.com/parzh/re-scaled/blob/main/docs/api/README.md

@@ -34,12 +34,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/parzh/re-scaled.git"
+    "url": "git+https://github.com/parzh/re-scaled.git"
   },
   "author": "Dmitry Parzhitsky <parzhitsky@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/parzh/re-scaled/issues"
+    "url": "https://github.com/parzh/re-scaled/issues"
   },
   "devDependencies": {
     "@parzh/tslint-config": "^1.0.1",
