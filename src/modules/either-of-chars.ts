@@ -17,7 +17,7 @@ export function eitherOfChars(...characters: string[]): RegExp {
 	const chars = new Set<string>();
 
 	for (const input of characters)
-		for (const character of asString(input))
+		for (const character of asString(input) as string)
 			chars.add(character);
 
 	if (!chars.size)
